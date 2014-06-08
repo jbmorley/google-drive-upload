@@ -41,8 +41,8 @@ OAUTH_SCOPE = 'https://www.googleapis.com/auth/drive'
 # Redirect URI for installed apps.
 REDIRECT_URI = 'urn:ietf:wg:oauth:2.0:oob'
 
-CONFIGURATION = os.path.expanduser("~/.google-drive-upload")
-SETTINGS = os.path.expanduser("~/.upload")
+SETTINGS = os.path.expanduser("~/.google-drive-upload")
+CONFIGURATION = os.path.join(SETTINGS, "config")
 CREDENTIALS = os.path.join(SETTINGS, "credentials")
 
 def components(path):
