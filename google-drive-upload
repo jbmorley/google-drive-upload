@@ -3,6 +3,7 @@
 import httplib2
 import os
 import os.path
+import sys
 import subprocess
 import pickle
 import argparse
@@ -66,8 +67,7 @@ def get_identifier(drive_service, path):
         found=True
         continue
     if not found:
-      print "Unable to find directory."
-      exit(1)
+      sys.exit("Unable to find directory.")
   
   return identifier
 
@@ -147,8 +147,7 @@ def main():
   try:
     drive_service = get_service(client_id, client_secret)
   except:
-    print "Unable to connect to Google Drive."
-    exit(1)
+    sys.exit("Unable to connect to Google Drive.")
 
   # Determine the identifier for the destination folder.
   directory = "/"
@@ -157,22 +156,24 @@ def main():
   identifier = get_identifier(drive_service, directory)
 
   for f in options.file:
-    print "Uploading '%s'..." % f
+    if os.path.exists(f):
+      print "Uploading '%s'..." % f
     
-    # Retry uploads three times before giving up and reporting an error.
-    retries = 0
-    while (True):
-      try:
-        upload(drive_service, f, identifier)
-        break;
-      except:
-        retries = retries + 1
-        if (retries >= 3):
-          print "Failed to upload '%s'" % f
-          exit()
-        else:
-          print "Retrying..."
+      # Retry uploads three times before giving up and reporting an error.
+      retries = 0
+      while (True):
+        try:
+          upload(drive_service, f, identifier)
+          break;
+        except:
+          retries = retries + 1
+          if (retries >= 3):
+            sys.exit("Failed to upload '%s'." % f)
+          else:
+            print "Retrying..."
 
+    else:
+      sys.exit("Local file '%s' does not exist." % f);
 
 if __name__ == '__main__':
   main()
