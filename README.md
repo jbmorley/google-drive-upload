@@ -20,6 +20,8 @@ optional arguments:
                         Target directory
 ```
 
+The first time you run `google-drive-upload` it will ask you to navigate to a URL which can be used to authenticate with Google Drive.
+
 Configuration
 -------------
 
