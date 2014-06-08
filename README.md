@@ -33,4 +33,4 @@ client_id = YOUR_CLIENT_ID
 client_secret = YOUR_CLIENT_SECRET
 ```
 
-You can obtain API keys from [Google Developers Console](https://code.google.com/apis/console).
+You can obtain API keys from the [Google Developers Console](https://code.google.com/apis/console).
