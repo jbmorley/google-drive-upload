@@ -19,3 +19,18 @@ optional arguments:
   -d DIRECTORY, --directory DIRECTORY
                         Target directory
 ```
+
+Configuration
+-------------
+
+`google-drive-upload` expects to find a configuration file at `~/.google-drive-upload/config` containing your Google API keys:
+
+
+```ini
+[default]
+
+client_id = YOUR_CLIENT_ID
+client_secret = YOUR_CLIENT_SECRET
+```
+
+You can obtain API keys from [Google Developers Console](https://code.google.com/apis/console).
