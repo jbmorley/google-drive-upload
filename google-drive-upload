@@ -4,8 +4,6 @@ import httplib2
 import os
 import os.path
 import sys
-import subprocess
-import pickle
 import argparse
 import mimetypes
 import ConfigParser
