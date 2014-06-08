@@ -143,7 +143,12 @@ def main():
   client_id = config.get("default", "client_id")
   client_secret = config.get("default", "client_secret")
   
-  drive_service = get_service(client_id, client_secret)
+  drive_service = None
+  try:
+    drive_service = get_service(client_id, client_secret)
+  except:
+    print "Unable to connect to Google Drive."
+    exit(1)
 
   # Determine the identifier for the destination folder.
   directory = "/"
