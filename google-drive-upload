@@ -107,7 +107,7 @@ def upload(drive_service, path, identifier):
     'parents': [{'id': identifier}]
   }
   
-  file = drive_service.files().insert(body=body, media_body=media_body).execute()
+  drive_service.files().insert(body=body, media_body=media_body).execute()
   
   
 def get_service(client_id, client_secret):
